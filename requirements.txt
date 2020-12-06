@@ -1,0 +1,4 @@
+requests~=2.22.0
+boto3~=1.9.66
+botocore~=1.12.67
+retry~=0.9.2

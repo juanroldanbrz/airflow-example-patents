@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  airflow:
+    image: puckel/docker-airflow:latest
+    ports:
+      - "8090:8080"
+    environment:
+      AWS_ACCESS_KEY: xxx
+      AWS_SECRET_KEY: xxxx
+      AWS_BUCKET_NAME: ddd
+      AWS_BUCKET_REGION: us-east-1
+    volumes:
+      - ./airflow-dags/:/usr/local/airflow/dags
+      - ./requirements.txt/:/requirements.txt
