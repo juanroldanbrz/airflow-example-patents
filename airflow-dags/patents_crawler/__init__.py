@@ -1,5 +1,5 @@
-import datetime
 import logging
+from datetime import datetime
 from typing import List
 
 import csv_exporter
@@ -15,6 +15,7 @@ logging.basicConfig(level=logging.INFO)
 def crawl(keyword: str):
     """
     Crawl patents based in a keyboard and export the data as CSV in AWS S3.
+    :param keyword: Keyword to search for in the patents API.
     """
 
     patents = list()
@@ -53,5 +54,4 @@ def _map_response_to_object(json_list: List[dict], keyword: str) -> List[PatentD
 
 
 def _get_date_today_as_str() -> str:
-    dt = datetime.datetime.today()
-    return f'{dt.day}-{dt.month}-{dt.year}:{dt.hour}-{dt.minute}-{dt.second}'
+    return datetime.now().strftime("%Y-%m-%d:%hh-%MM-%ss")

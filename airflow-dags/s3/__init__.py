@@ -16,12 +16,15 @@ s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
 def upload_to_aws(local_file, s3_file):
     """
     Uploads a file into a S3 bucket.
+    :param local_file: local file to upload to S3.
+    :param s3_file: file path in the s3 bucket.
+    :return: True if upload was successful.
     """
 
     logging.info("Uploading file " + s3_file)
     try:
         s3.upload_file(local_file, AWS_BUCKET_NAME, s3_file)
-        logging.info(s3_file + " uploaded successfuly")
+        logging.info(s3_file + " uploaded successfully")
         return True
     except FileNotFoundError:
         logging.error(s3_file + " file was not found")

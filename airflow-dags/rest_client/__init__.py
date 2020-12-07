@@ -9,6 +9,8 @@ from retry import retry
 def get(url: str):
     """
     Performs an HTTP GET request and retry if there is an error.
+    :param url: URL To GET.
+    :return: Returns a HTTP response object.
     """
 
     time.sleep(1)
