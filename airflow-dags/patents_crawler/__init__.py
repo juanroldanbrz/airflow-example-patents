@@ -13,6 +13,10 @@ logging.basicConfig(level=logging.INFO)
 
 
 def crawl(keyword: str):
+    """
+    Crawl patents based in a keyboard and export the data as CSV in AWS S3.
+    """
+
     patents = list()
     crawled_at = _get_date_today_as_str()
     for i in range(1, PAGES_TO_CRAWL + 1):
@@ -31,7 +35,7 @@ def crawl(keyword: str):
     logging.info('Finished crawling patents for keyboard ' + keyword)
 
     tmp_csv = 'patents_' + keyword + '_' + crawled_at + '.csv'
-    csv_exporter.export_patterns(tmp_csv, patents)
+    csv_exporter.export_patents(tmp_csv, patents)
     s3.upload_to_aws(tmp_csv, '/patents/' + tmp_csv)
 
 

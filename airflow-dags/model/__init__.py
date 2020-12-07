@@ -1,4 +1,7 @@
 class PatentDto:
+    """
+    Encapsulate patents information.
+    """
 
     def __init__(self, patent_id: str, patent_nr: str, patent_title: str, patent_date: str, keyword: str):
         self.patent_id = patent_id

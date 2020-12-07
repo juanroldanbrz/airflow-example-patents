@@ -3,7 +3,11 @@ from typing import List
 from model import PatentDto
 
 
-def export_patterns(filename: str, patents: List[PatentDto]):
+def export_patents(filename: str, patents: List[PatentDto]):
+    """
+    Export patent DTOs to CSV files.
+    """
+
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(PatentDto.to_csv_header() + '\n')
         for patent in patents:

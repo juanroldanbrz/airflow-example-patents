@@ -14,6 +14,10 @@ s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
 
 
 def upload_to_aws(local_file, s3_file):
+    """
+    Uploads a file into a S3 bucket.
+    """
+
     logging.info("Uploading file " + s3_file)
     try:
         s3.upload_file(local_file, AWS_BUCKET_NAME, s3_file)

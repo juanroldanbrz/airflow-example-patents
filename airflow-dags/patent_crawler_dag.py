@@ -12,6 +12,10 @@ default_args = {
 }
 
 with DAG('patent_crawler', default_args=default_args, catchup=False, schedule_interval='0 * * * *') as dag:
+    """
+    Airflow DAG to crawl patents.
+    """
+
     start_task = DummyOperator(
         task_id='starting_point'
     )
