@@ -45,14 +45,14 @@ def _map_response_to_object(json_list: List[dict], keyword: str) -> List[PatentD
     to_return = list()
     for patent_entry in json_list:
         to_return.append(PatentDto(
-            patent_entry['patent_id'],
-            patent_entry['patent_number'],
-            patent_entry['patent_title'],
-            keyword,
-            patent_entry['patent_date'],
+            patent_id=patent_entry['patent_id'],
+            patent_nr=patent_entry['patent_number'],
+            patent_title=patent_entry['patent_title'],
+            keyword=keyword,
+            patent_date=patent_entry['patent_date'],
         ))
     return to_return
 
 
 def _get_date_today_as_str() -> str:
-    return datetime.now().strftime("%Y-%m-%d:%hh-%MM-%ss")
+    return datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
