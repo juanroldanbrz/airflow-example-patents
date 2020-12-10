@@ -2,8 +2,9 @@ import logging
 from datetime import datetime
 from typing import List
 
+import requests
+
 import csv_exporter
-import rest_client
 import s3
 from model import PatentDto
 
@@ -28,7 +29,7 @@ def crawl(keyword: str):
                        str(PAGES_TO_CRAWL) + ',"per_page":' + str(RESULTS_PER_PAGE) + '}'
 
         request_uri = url + '?' + query + query_filter
-        json = rest_client.get(request_uri).json()
+        json = requests.get(request_uri).json()
         patent_list = _map_response_to_object(json['patents'], keyword)
         for patent in patent_list:
             patents.append(patent)
